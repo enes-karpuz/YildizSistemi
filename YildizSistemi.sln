@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YildizSistemi.DataAccessLayer", "YildizSistemi.DataAccessLayer\YildizSistemi.DataAccessLayer.csproj", "{A08962F5-29FB-4F39-B5C5-8088B3E08950}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YildizSistemi.DataAccessLayer", "YildizSistemi.DataAccessLayer\YildizSistemi.DataAccessLayer.csproj", "{A08962F5-29FB-4F39-B5C5-8088B3E08950}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YildizSistemi.BusinessLogicLayer", "YildizSistemi.BusinessLogicLayer\YildizSistemi.BusinessLogicLayer.csproj", "{C4004725-4733-4CC3-BCD3-EF5E33A479FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YildizSistemi.BusinessLogicLayer", "YildizSistemi.BusinessLogicLayer\YildizSistemi.BusinessLogicLayer.csproj", "{C4004725-4733-4CC3-BCD3-EF5E33A479FB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A08962F5-29FB-4F39-B5C5-8088B3E08950} = {A08962F5-29FB-4F39-B5C5-8088B3E08950}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YildizSistemi.PresentationLayer", "YildizSistemi.PresentationLayer\YildizSistemi.PresentationLayer.csproj", "{4AFF2F4D-5423-478E-853A-CE6A14B28144}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YildizSistemi.PresentationLayer", "YildizSistemi.PresentationLayer\YildizSistemi.PresentationLayer.csproj", "{4AFF2F4D-5423-478E-853A-CE6A14B28144}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4004725-4733-4CC3-BCD3-EF5E33A479FB} = {C4004725-4733-4CC3-BCD3-EF5E33A479FB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
