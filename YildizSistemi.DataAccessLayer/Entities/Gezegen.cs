@@ -9,10 +9,10 @@ namespace YildizSistemi.DataAccessLayer.Model
     public class Gezegen
     {
         public int GezegenID { get; set; }
-        public string Isim { get; set; }
+        public string? Isim { get; set; }
         public int YariCap { get; set; }
         public int YildizaUzaklik { get; set; }
-        public int Yorungeegikligi { get; set; }
+        public int YorungeEgikligi { get; set; }
         public int UyduSayisi { get; set; }
         public int Sicaklik { get; set; }
     }
