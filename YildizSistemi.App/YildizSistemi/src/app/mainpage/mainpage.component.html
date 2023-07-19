@@ -1,0 +1,48 @@
+<div class="col-md-6">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" hidden>Id</th>
+                <th scope="col">İsim</th>
+                <th scope="col">Yarıçap</th>
+                <th scope="col">Yıldıza Uzaklık</th>
+                <th scope="col">Yörünge Eğikliği</th>
+                <th scope="col">Uydu Sayısı</th>
+                <th scope="col">Sıcaklık</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let gezegen of gezegenListesi">
+                <td (click)="formDoldur(gezegen)" hidden >{{gezegen.id}}</td>
+                <td (click)="formDoldur(gezegen)">{{gezegen.isim}}</td>
+                <td (click)="formDoldur(gezegen)">{{gezegen.yariCap}}</td>
+                <td (click)="formDoldur(gezegen)">{{gezegen.yildizaUzaklik}}</td>
+                <td (click)="formDoldur(gezegen)">{{gezegen.yorungeEgikligi}}</td>
+                <td (click)="formDoldur(gezegen)">{{gezegen.uyduSayisi}}</td>
+                <td (click)="formDoldur(gezegen)">{{gezegen.sicaklik}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="col-md-6">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" hidden>Id</th>
+                <th scope="col">İsim</th>
+                <th scope="col">Yarıçap</th>
+                <th scope="col">Gezegen ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let uydu of uyduListesi">
+                <td (click)="formDoldur(uydu)" hidden >{{uydu.id}}</td>
+                <td (click)="formDoldur(uydu)">{{uydu.isim}}</td>
+                <td (click)="formDoldur(uydu)">{{uydu.yariCap}}</td>
+                <td (click)="formDoldur(uydu)">{{uydu.gezegenId}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

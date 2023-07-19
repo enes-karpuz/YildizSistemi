@@ -1,0 +1,39 @@
+<div class="col-md-6" margin="auto">
+  <form #form="ngForm" (ngSubmit)="ekleUydu()">
+    <div class="row">
+      <div class="col-sm">
+        <label for="isim" class="form-label">İsim</label>
+      </div>
+      <div class="col-sm">
+        <input type="text" class="form-control" id="isim" name="isim" [(ngModel)]="uydu.isim">
+      </div>
+      <div class="col-sm">
+        <div id="isim" class="form-text">İsim giriniz</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <label for="yariCap" class="form-label">Yarı Çap</label>
+      </div>
+      <div class="col-sm">
+        <input type="text" class="form-control" id="yariCap" name="yariCap" [(ngModel)]="this.uydu.yariCap">
+      </div>
+      <div class="col-sm">
+        <div id="yariCap" class="form-text">Yarıçap giriniz</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <label for="gezegenId" class="form-label">Gezegen ID</label>
+      </div>
+      <div class="col-sm">
+        <input type="text" class="form-control" id="gezegenId" name="gezegenId" [(ngModel)]="this.uydu.gezegenId">
+      </div>
+      <div class="col-sm">
+        <div id="gezegenId" class="form-text">Gezegen ID</div>
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" (click)="sayfaYenile()">Ekle</button>
+  </form>
+</div>

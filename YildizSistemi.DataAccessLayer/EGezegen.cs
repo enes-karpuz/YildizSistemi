@@ -15,11 +15,15 @@ namespace YildizSistemi.DataAccessLayer
         //TODO : Gezegen id'deki D küçük olacak.
         public SqlConnection sqlConnection { get; set; }
         public SqlCommand sqlCommand { get; set; }
-        public string ConnetionString = "Data Source=ENES-THINKPAD;Initial Catalog=YildizSistemleri;Integrated Security=True";
+        Database database { get; set; }
+        
+        public string connetionString = "Data Source=ENES-THINKPAD;Initial Catalog=YildizSistemleri;Integrated Security=True";
         
         public EGezegen()
         {
-            
+            database = new Database();
+            sqlConnection = new SqlConnection();
+            sqlConnection.ConnectionString = connetionString;
         }
 
         public List<Gezegen> GetirGezegen()
@@ -28,6 +32,7 @@ namespace YildizSistemi.DataAccessLayer
             sqlCommand.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable dtGezegen = new DataTable();
+            database.OpenConnetion(sqlConnection);
             sqlDataAdapter.Fill(dtGezegen);
 
             List<Gezegen> gezegenListesi = new List<Gezegen>();
@@ -35,7 +40,7 @@ namespace YildizSistemi.DataAccessLayer
             {
                 gezegenListesi.Add(new Gezegen()
                 {
-                    GezegenID = Convert.ToInt32(satir["GezegenID"]),
+                    Id = Convert.ToInt32(satir["Id"]),
                     Isim = satir["Isim"].ToString(),
                     YariCap = Convert.ToInt32(satir["YariCap"]),
                     YildizaUzaklik = Convert.ToInt32(satir["YildizaUzaklik"]),
@@ -47,18 +52,19 @@ namespace YildizSistemi.DataAccessLayer
             return gezegenListesi;
         }
 
-        public Gezegen OkuGezegen(int gezegenId)
+        public Gezegen OkuGezegen(int id)
         {
             SqlCommand sqlCommand = new SqlCommand("OkuGezegen", sqlConnection);
             sqlCommand.CommandType = CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("@p_GezegenID", gezegenId);
+            sqlCommand.Parameters.AddWithValue("@p_GezegenID", id);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
             DataTable dtGezegen = new DataTable();
+            database.OpenConnetion(sqlConnection);
             sqlDataAdapter.Fill(dtGezegen);
 
             Gezegen okunanGezegen = new Gezegen()
             {
-                GezegenID = Convert.ToInt32(dtGezegen.Rows[0]["GezegenID"]),
+                Id = Convert.ToInt32(dtGezegen.Rows[0]["Id"]),
                 Isim = dtGezegen.Rows[0]["Isim"].ToString(),
                 YariCap = Convert.ToInt32(dtGezegen.Rows[0]["YariCap"]),
                 YildizaUzaklik = Convert.ToInt32(dtGezegen.Rows[0]["YildizaUzaklik"]),
@@ -74,12 +80,13 @@ namespace YildizSistemi.DataAccessLayer
         {
             SqlCommand sqlCommand = new SqlCommand("EkleGezegen", sqlConnection);
             sqlCommand.CommandType = CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("@p_Gezegenİsım", gezegen.Isim);
+            sqlCommand.Parameters.AddWithValue("@p_GezegenIsim", gezegen.Isim);
             sqlCommand.Parameters.AddWithValue("@p_GezegenYariCap", gezegen.YariCap);
             sqlCommand.Parameters.AddWithValue("@p_GezegenYildizaUzaklik", gezegen.YildizaUzaklik);
             sqlCommand.Parameters.AddWithValue("@p_GezegenYorungeEgikligi", gezegen.YorungeEgikligi);
             sqlCommand.Parameters.AddWithValue("@p_GezegenUyduSayisi", gezegen.UyduSayisi);
             sqlCommand.Parameters.AddWithValue("@p_GezegenSicaklik", gezegen.Sicaklik);
+            database.OpenConnetion(sqlConnection);
             if (sqlCommand.ExecuteNonQuery() > 0)
             {
                 sqlConnection.Close();
@@ -91,16 +98,16 @@ namespace YildizSistemi.DataAccessLayer
 
         public bool GuncelleGezegen(Gezegen gezegen)
         {
-            SqlCommand sqlCommand = new SqlCommand("EkleGezegen", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("GuncelleGezegen", sqlConnection);
             sqlCommand.CommandType = CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("@p_GezegenId", gezegen.GezegenID);
-            sqlCommand.Parameters.AddWithValue("@p_Gezegenİsım", gezegen.Isim); // TODO : İsim düzelticektir.
+            sqlCommand.Parameters.AddWithValue("@p_Id", gezegen.Id);
+            sqlCommand.Parameters.AddWithValue("@p_GezegenIsim", gezegen.Isim); // TODO : İsim düzelticektir.
             sqlCommand.Parameters.AddWithValue("@p_GezegenYariCap", gezegen.YariCap);
             sqlCommand.Parameters.AddWithValue("@p_GezegenYildizaUzaklik", gezegen.YildizaUzaklik);
             sqlCommand.Parameters.AddWithValue("@p_GezegenYorungeEgikligi", gezegen.YorungeEgikligi);
             sqlCommand.Parameters.AddWithValue("@p_GezegenUyduSayisi", gezegen.UyduSayisi);
             sqlCommand.Parameters.AddWithValue("@p_GezegenSicaklik", gezegen.Sicaklik);
-            
+            database.OpenConnetion(sqlConnection);
             if (sqlCommand.ExecuteNonQuery() == 1)
             {
                 sqlConnection.Close();
@@ -110,12 +117,12 @@ namespace YildizSistemi.DataAccessLayer
         }
 
         //TODO : Return id olacak.
-        public bool SilGezegen(int gezegenId)
+        public bool SilGezegen(int Id)
         {
             SqlCommand sqlCommand = new SqlCommand("SilGezegen", sqlConnection);
             sqlCommand.CommandType = CommandType.StoredProcedure;
-            sqlCommand.Parameters.AddWithValue("@p_GezegenID", gezegenId);
-
+            sqlCommand.Parameters.AddWithValue("@p_GezegenID", Id);
+            database.OpenConnetion(sqlConnection);
             if (sqlCommand.ExecuteNonQuery() == 1)
             {
                 sqlConnection.Close();

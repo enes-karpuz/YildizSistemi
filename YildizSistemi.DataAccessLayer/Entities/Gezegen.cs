@@ -8,7 +8,7 @@ namespace YildizSistemi.DataAccessLayer.Model
 {
     public class Gezegen
     {
-        public int GezegenID { get; set; }
+        public int Id { get; set; }
         public string? Isim { get; set; }
         public int YariCap { get; set; }
         public int YildizaUzaklik { get; set; }

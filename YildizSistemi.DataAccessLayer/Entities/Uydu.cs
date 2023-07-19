@@ -8,10 +8,9 @@ namespace YildizSistemi.DataAccessLayer.Model
 {
     public class Uydu
     {
-        public int UyduID { get; set; }
+        public int Id { get; set; }
         public string Isim { get; set; }
         public int YariCap { get; set; }
-        public string Gezegeni { get; set; }
-        public int GezegenID { get; set; }
+        public int GezegenId { get; set; }
     }
 }

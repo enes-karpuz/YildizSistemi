@@ -1,0 +1,72 @@
+<div class="col-md-6" margin="auto">
+  <form #form="ngForm" (ngSubmit)="ekleGezegen()">
+    <div class="row">
+      <div class="col-sm">
+        <label for="isim" class="form-label">İsim</label>
+      </div>
+      <div class="col-sm">
+        <input type="text" class="form-control" id="isim" name="isim" [(ngModel)]="gezegen.isim">
+      </div>
+      <div class="col-sm">
+        <div id="isim" class="form-text">İsim giriniz</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <label for="yariCap" class="form-label">Yarı Çap</label>
+      </div>
+      <div class="col-sm">
+        <input type="text" class="form-control" id="yariCap" name="yariCap" [(ngModel)]="this.gezegen.yariCap">
+      </div>
+      <div class="col-sm">
+        <div id="yariCap" class="form-text">Yarıçap giriniz</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <label for="yildizaUzaklik" class="form-label">Yıldıza Uzaklık</label>
+      </div>
+      <div class="col-sm">
+        <input type="text" class="form-control" id="yildizaUzaklik" name="yildizaUzaklik" [(ngModel)]="this.gezegen.yildizaUzaklik">
+      </div>
+      <div class="col-sm">
+        <div id="yildizaUzaklik" class="form-text">Uzaklık giriniz</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <label for="yorungeEgikligi" class="form-label">Yörünge Eğikliği</label>
+      </div>
+      <div class="col-sm">
+        <input type="text" class="form-control" id="yorungeEgikligi" name="yorungeEgikligi" [(ngModel)]="this.gezegen.yorungeEgikligi">
+      </div>
+      <div class="col-sm">
+        <div id="yorungeEgikligi" class="form-text">Eğiklik giriniz</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <label for="uyduSayisi" class="form-label">Uydu Sayısı</label>
+      </div>
+      <div class="col-sm">
+        <input type="number" class="form-control" id="uyduSayisi" name="uyduSayisi" [(ngModel)]="this.gezegen.uyduSayisi">
+      </div>
+      <div class="col-sm">
+        <div id="uyduSayisi" class="form-text">Uydu sayısı giriniz</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <label for="sicaklik" class="form-label">Sıcaklık</label>
+      </div>
+      <div class="col-sm">
+        <input type="number" class="form-control" id="sicaklik" name="sicaklik" [(ngModel)]="this.gezegen.sicaklik">
+      </div>
+      <div class="col-sm">
+        <div id="sicaklik" class="form-text">Sıcaklık giriniz</div>
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" (click)="sayfaYenile()">Ekle</button>
+  </form>
+</div>
